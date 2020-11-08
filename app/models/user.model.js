@@ -66,6 +66,7 @@ User.create = (newUser, result) => {
 User.update = (user, result) => {
 	sql("users")
 		.where("id", "=", user.id)
+		.update(user)
 		.then(response => {
 			console.log(response);
 			result(null, {
