@@ -15,6 +15,7 @@ app.get("/", (req, res) => {
 
 require("./app/routes/user.routes.js")(app);
 require("./app/routes/post.routes.js")(app);
+require("./app/routes/comment.routes.js")(app);
 
 //set port and listen for
 const PORT = process.env.PORT || 5000;

@@ -1,5 +1,4 @@
 const Post = require("../models/post.model.js");
-const User = require("../models/user.model.js");
 
 exports.getAll = (req, res) => {
 	Post.getAll((err, data) => {
@@ -32,6 +31,8 @@ exports.create = (req, res) => {
 	if (!req.body) {
 		res.status(400).send({
 			message: "request body can not be empty",
+			success: false,
+			error: true,
 		});
 		return;
 	}
@@ -93,6 +94,7 @@ exports.update = (req, res) => {
 		if (err)
 			res.status(400).send({
 				message: err.message || "something went wrong",
+				...err,
 			});
 		else res.status(200).send(data);
 	});
